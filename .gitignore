@@ -1,5 +1,2 @@
-# Do not commit your environment variables
-.env
-
-# Do not commit installed packages
 node_modules/
+.env
