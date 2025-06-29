@@ -1,0 +1,521 @@
+/* About.css */
+
+.about-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #343a40;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-container p {
+    font-size: 1.25rem;
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .about-container p:last-child {
+    margin-bottom: 0;
+  }
+  
+/* About Page Styles */
+.about-container {
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  color: #ffd700;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.mission-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.mission-text h2 {
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.mission-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.mission-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.stat {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+}
+
+.stat svg {
+  font-size: 2rem;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  color: #1e3c72;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.stat p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.mission-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.image-placeholder svg {
+  font-size: 5rem;
+  color: white;
+  opacity: 0.8;
+}
+
+/* How It Works Section */
+.how-it-works {
+  padding: 80px 0;
+  background: white;
+}
+
+.how-it-works h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.step {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.step-icon svg {
+  font-size: 2rem;
+  color: white;
+}
+
+.step h3 {
+  font-size: 1.3rem;
+  color: #1e3c72;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.step p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+.why-choose-us h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.feature {
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.feature p {
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Our Values Section */
+.our-values {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.our-values h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.values-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.value {
+  text-align: center;
+  padding: 40px 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.value:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.value-icon {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 20px;
+}
+
+.value h3 {
+  font-size: 1.4rem;
+  color: #1e3c72;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.value p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 80px 0;
+  background: white;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.contact-section > .container > p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.contact-item svg {
+  font-size: 2rem;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.contact-item h4 {
+  font-size: 1.2rem;
+  color: #1e3c72;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .mission-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .mission-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .steps-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .values-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 60px 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .mission-section,
+  .how-it-works,
+  .why-choose-us,
+  .our-values,
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .mission-text h2,
+  .how-it-works h2,
+  .why-choose-us h2,
+  .our-values h2,
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+
+  .mission-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .image-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-icon {
+    font-size: 3rem;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .step,
+  .feature,
+  .value {
+    padding: 30px 20px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+  
