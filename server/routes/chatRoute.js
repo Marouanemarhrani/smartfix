@@ -16,7 +16,7 @@ const router = express.Router();
 router.post('/create-chat', requireSignIn, createChatController);
 
 // Send message (requires authentication)
-router.post('/send-message', requireSignIn, formidable(), sendMessageController);
+router.post('/send-message', requireSignIn, sendMessageController);
 
 // Get chat messages (requires authentication - chat participant only)
 router.get('/get-messages/:chatId', requireSignIn, getChatMessagesController);

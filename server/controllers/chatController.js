@@ -71,7 +71,7 @@ const createChatController = async (req, res) => {
 const sendMessageController = async (req, res) => {
     try {
         const { chatId, content, messageType = 'text' } = req.body;
-        const { attachments } = req.files;
+        // No attachments support for now
 
         if (!chatId) return res.status(400).send({ error: "Chat ID is required" });
         if (!content) return res.status(400).send({ error: "Message content is required" });

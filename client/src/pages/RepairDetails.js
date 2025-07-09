@@ -20,6 +20,7 @@ const RepairDetails = () => {
   const [quoteForm] = Form.useForm();
   const [submittingQuote, setSubmittingQuote] = useState(false);
   const [acceptingQuote, setAcceptingQuote] = useState(null);
+  const [startingChat, setStartingChat] = useState(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,9 +31,7 @@ const RepairDetails = () => {
     try {
       setLoading(true);
       console.log('Fetching repair details for ID:', id);
-      const apiUrl = process.env.REACT_APP_API || 'http://localhost:8080';
-      console.log('API URL:', `${apiUrl}/api/repairs/get-repair/${id}`);
-      const { data } = await axios.get(`${apiUrl}/api/repairs/get-repair/${id}`);
+      const { data } = await axios.get(`/api/repairs/get-repair/${id}`);
       console.log('Repair details response:', data);
       if (data.success) {
         setRepair(data.repair);
@@ -50,9 +49,7 @@ const RepairDetails = () => {
   const fetchQuotes = async () => {
     try {
       console.log('Fetching quotes for repair ID:', id);
-      const apiUrl = process.env.REACT_APP_API || 'http://localhost:8080';
-      console.log('API URL:', `${apiUrl}/api/quotes/get-quotes/${id}`);
-      const { data } = await axios.get(`${apiUrl}/api/quotes/get-quotes/${id}`);
+      const { data } = await axios.get(`/api/quotes/get-quotes/${id}`);
       console.log('Quotes response:', data);
       if (data.success) {
         setQuotes(data.quotes);
@@ -68,8 +65,7 @@ const RepairDetails = () => {
   const handleSubmitQuote = async (values) => {
     try {
       setSubmittingQuote(true);
-      const apiUrl = process.env.REACT_APP_API || 'http://localhost:8080';
-      const { data } = await axios.post(`${apiUrl}/api/quotes/create-quote`, {
+      const { data } = await axios.post(`/api/quotes/create-quote`, {
         repairId: id,
         ...values
       });
@@ -92,8 +88,7 @@ const RepairDetails = () => {
   const handleAcceptQuote = async (quoteId) => {
     try {
       setAcceptingQuote(quoteId);
-      const apiUrl = process.env.REACT_APP_API || 'http://localhost:8080';
-      const { data } = await axios.put(`${apiUrl}/api/quotes/accept-quote/${quoteId}`, {});
+      const { data } = await axios.put(`/api/quotes/accept-quote/${quoteId}`, {});
 
       if (data.success) {
         toast.success('Quote accepted! Chat has been created.');
@@ -110,18 +105,21 @@ const RepairDetails = () => {
   // Start chat with tradesperson
   const handleStartChat = async (tradespersonId) => {
     try {
-      const apiUrl = process.env.REACT_APP_API || 'http://localhost:8080';
-      const { data } = await axios.post(`${apiUrl}/api/chats/create-chat`, {
+      setStartingChat(true);
+      const { data } = await axios.post(`/api/chats/create-chat`, {
         repairId: id,
         tradespersonId
+      }, {
+        headers: { Authorization: auth?.token }
       });
-
       if (data.success) {
         navigate(`/chat/${data.chat._id}`);
       }
     } catch (error) {
       console.error(error);
-      toast.error('Error starting chat');
+      toast.error(error.response?.data?.error || 'Error starting chat');
+    } finally {
+      setStartingChat(false);
     }
   };
 
@@ -211,14 +209,15 @@ const RepairDetails = () => {
 
                 {repair.photos && repair.photos.length > 0 && (
                   <div className="info-section">
-                    <h3>Photos</h3>
+                    <h3>Uploaded Images</h3>
                     <div className="photos-grid">
-                      {repair.photos.map((photo, index) => (
-                        <div key={index} className="photo-item">
-                          <img 
-                            src={`/api/repairs/repair-photo/${repair._id}/${index}`}
-                            alt={`Repair photo ${index + 1}`}
+                      {repair.photos.map((photo, idx) => (
+                        <div key={idx} className="photo-item">
+                          <img
+                            src={`${process.env.REACT_APP_API || 'http://localhost:8080'}/api/repairs/repair-photo/${repair._id}/${idx}`}
+                            alt={`Repair photo ${idx + 1}`}
                             className="repair-photo"
+                            style={{ maxWidth: '100%', maxHeight: 200, borderRadius: 8, marginBottom: 8 }}
                           />
                         </div>
                       ))}
@@ -263,10 +262,11 @@ const RepairDetails = () => {
                   icon={<MessageOutlined />}
                   size="large"
                   block
-                  onClick={() => handleStartChat(repair.client._id)}
+                  onClick={() => handleStartChat(auth.user._id)}
                   className="action-button"
+                  disabled={startingChat}
                 >
-                  Message Client
+                  {startingChat ? 'Starting Chat...' : 'Message Client'}
                 </Button>
               )}
 
@@ -329,10 +329,11 @@ const RepairDetails = () => {
                         {isTradesperson && quote.tradesperson._id === auth?.user?._id && (
                           <Button 
                             type="default"
-                            onClick={() => handleStartChat(repair.client._id)}
+                            onClick={() => handleStartChat(auth.user._id)}
                             block
+                            disabled={startingChat}
                           >
-                            Message Client
+                            {startingChat ? 'Starting Chat...' : 'Message Client'}
                           </Button>
                         )}
                       </div>

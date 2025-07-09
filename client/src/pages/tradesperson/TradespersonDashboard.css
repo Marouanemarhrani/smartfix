@@ -3,7 +3,7 @@
   gap: 30px;
   padding: 20px;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-bg);
 }
 
 .dashboard-content {
@@ -12,15 +12,15 @@
 }
 
 .dashboard-header {
-  background: white;
+  background: var(--color-surface);
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   margin-bottom: 30px;
 }
 
 .dashboard-header h1 {
-  color: #333;
+  color: var(--color-primary);
   margin-bottom: 10px;
   font-size: 2rem;
   font-weight: 600;
@@ -41,14 +41,14 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--color-surface);
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s var(--transition);
 }
 
 .stat-card:hover {
@@ -59,30 +59,30 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #007bff;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff;
   font-size: 1.5rem;
 }
 
 .stat-icon.accepted {
-  background: #28a745;
+  background: var(--color-success);
 }
 
 .stat-icon.pending {
-  background: #ffc107;
+  background: var(--color-accent);
 }
 
 .stat-icon.earnings {
-  background: #17a2b8;
+  background: var(--color-secondary);
 }
 
 .stat-content h3 {
   font-size: 2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--color-primary);
   margin: 0 0 5px 0;
 }
 
@@ -101,9 +101,9 @@
 }
 
 .dashboard-section {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -116,21 +116,21 @@
 }
 
 .section-header h2 {
-  color: #333;
+  color: var(--color-primary);
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
 }
 
 .view-all {
-  color: #007bff;
+  color: var(--color-secondary);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color var(--transition);
 }
 
 .view-all:hover {
-  color: #0056b3;
+  color: var(--color-accent);
 }
 
 /* Quotes List */
@@ -141,13 +141,13 @@
 .quote-item {
   padding: 15px;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: var(--radius);
   margin-bottom: 15px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s var(--transition);
 }
 
 .quote-item:hover {
-  border-color: #007bff;
+  border-color: var(--color-primary);
 }
 
 .quote-header {
@@ -158,14 +158,14 @@
 }
 
 .quote-header h4 {
-  color: #333;
+  color: var(--color-primary);
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
 }
 
 .quote-amount {
-  color: #28a745;
+  color: var(--color-success);
   font-weight: 600;
   font-size: 1.1rem;
   margin: 5px 0;
@@ -185,13 +185,13 @@
 .job-item {
   padding: 15px;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: var(--radius);
   margin-bottom: 15px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s var(--transition);
 }
 
 .job-item:hover {
-  border-color: #007bff;
+  border-color: var(--color-primary);
 }
 
 .job-header {
@@ -202,7 +202,7 @@
 }
 
 .job-header h4 {
-  color: #333;
+  color: var(--color-primary);
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -230,7 +230,7 @@
 }
 
 .job-budget {
-  color: #28a745;
+  color: var(--color-success);
   font-weight: 600;
 }
 
@@ -270,14 +270,14 @@
 
 /* Quick Actions */
 .quick-actions {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   padding: 30px;
 }
 
 .quick-actions h2 {
-  color: #333;
+  color: var(--color-primary);
   margin-bottom: 25px;
   font-size: 1.3rem;
   font-weight: 600;
@@ -290,21 +290,21 @@
 }
 
 .action-card {
-  background: #f8f9fa;
+  background: var(--color-bg);
   padding: 25px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   text-decoration: none;
-  color: #333;
+  color: var(--color-primary);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--transition);
   border: 2px solid transparent;
 }
 
 .action-card:hover {
-  background: #007bff;
-  color: white;
+  background: var(--color-primary);
+  color: #fff;
   transform: translateY(-5px);
-  border-color: #007bff;
+  border-color: var(--color-primary);
 }
 
 .action-card i {

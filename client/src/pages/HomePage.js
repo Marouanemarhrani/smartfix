@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Button, Modal, Form, Input, InputNumber, Select } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import './HomePage.css';
+import placeholderImg from '../data/image.png';
 
 const { TextArea } = Input;
 
@@ -79,6 +80,17 @@ const HomePage = () => {
       <div className="homepage-container">
         <div className="main-content">
           <div className="row">
+            <div className="col-12 text-center" style={{ marginBottom: '2rem' }}>
+              {auth?.user && auth.user.role === 0 && (
+                <button
+                  className="btn"
+                  style={{ fontSize: '1.1rem', padding: '0.75rem 2rem', margin: '1rem 0' }}
+                  onClick={() => navigate('/dashboard/user/create-repair')}
+                >
+                  + Post a Repair Job
+                </button>
+              )}
+            </div>
             {/* Repair Jobs Section */}
             <div className="col-12">
               <h1 className="text-center">Available Repair Jobs</h1>
@@ -101,7 +113,7 @@ const HomePage = () => {
                           }}
                         />
                       ) : (
-                        <div className="no-image">No Image</div>
+                        <img src={placeholderImg} alt="No Image" />
                       )}
                       <div className="no-image" style={{ display: 'none' }}>Image Failed to Load</div>
                     </div>
@@ -133,19 +145,6 @@ const HomePage = () => {
                               Submit Quote
                             </Button>
                           )}
-                          <button 
-                            className="btn btn-secondary btn-sm"
-                            onClick={() => {
-                              console.log('Testing photo endpoint for repair:', repair._id);
-                              console.log('Photo count:', repair.photoCount);
-                              fetch(`${process.env.REACT_APP_API || 'http://localhost:8080'}/api/repairs/test-photos/${repair._id}`)
-                                .then(res => res.json())
-                                .then(data => console.log('Photo test result:', data))
-                                .catch(err => console.error('Photo test error:', err));
-                            }}
-                          >
-                            Test Photos
-                          </button>
                         </div>
                       </div>
                     </div>

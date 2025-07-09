@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import LayoutNF from '../../components/Layout/LayoutNF';
 import UserMenu from '../../components/Layout/UserMenu';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import './MyRepairs.css';
 
 const MyRepairs = () => {
   const [repairs, setRepairs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [startingChatId, setStartingChatId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMyRepairs();
@@ -62,6 +64,37 @@ const MyRepairs = () => {
         return 'urgency-low';
       default:
         return 'urgency-medium';
+    }
+  };
+
+  const handleStartChat = async (repair) => {
+    if (!repair.acceptedQuote || !repair.acceptedQuote.tradesperson) return;
+    // Fix: handle both object and string for tradesperson
+    const tradespersonId =
+      repair.acceptedQuote.tradesperson?._id || repair.acceptedQuote.tradesperson;
+    console.log('Starting chat for repair:', repair);
+    console.log('Using tradespersonId:', tradespersonId);
+    setStartingChatId(repair._id);
+    try {
+      const { data } = await axios.post(`/api/chats/create-chat`, {
+        repairId: repair._id,
+        tradespersonId
+      }, {
+        headers: {
+          Authorization: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')).token : '',
+        },
+      });
+      if (data.success) {
+        navigate(`/chat/${data.chat._id}`);
+      } else {
+        toast.error(data.error || 'Could not start chat');
+        console.error('Chat creation error:', data);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.error || 'Could not start chat');
+      console.error('Chat creation error:', error.response?.data || error);
+    } finally {
+      setStartingChatId(null);
     }
   };
 
@@ -156,12 +189,14 @@ const MyRepairs = () => {
                           View Details
                         </Link>
                         {repair.acceptedQuote && (
-                          <Link 
-                            to={`/chat/${repair._id}`}
+                          <button
                             className="btn btn-success btn-sm"
+                            onClick={() => handleStartChat(repair)}
+                            disabled={startingChatId === repair._id}
+                            style={{ minWidth: 120 }}
                           >
-                            Chat with Tradesperson
-                          </Link>
+                            {startingChatId === repair._id ? 'Starting Chat...' : 'Chat with Tradesperson'}
+                          </button>
                         )}
                       </div>
                     </div>

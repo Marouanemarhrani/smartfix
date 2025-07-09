@@ -1,87 +1,87 @@
 .divDashboard {
-    display: flex;
-    height: 100vh;
-    width: auto;
+  display: flex;
+  height: 100vh;
+  width: auto;
+  background-color: var(--color-bg);
 }
 
 .divd2 {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column; 
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column; 
 }
 
 .divUserMenu {
-    border-right: 2px solid #ddd; 
-    padding-right: 15px;
-
+  border-right: 2px solid #d1d5db; 
+  padding-right: 15px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-
-
 .divd4 {
-    padding-left: 15px;
-    border-right: 2px solid #ddd;
+  padding-left: 15px;
+  border-right: 2px solid #d1d5db;
 }
 
 @media (min-width: 768px) {
-    .divd2 {
-        flex-direction: row; 
-    }
-    .divUserMenu {
-        border-right: 2px solid #ddd; 
-    }
-    .divd4 {
-        padding-left: 15px;
-    }
+  .divd2 {
+      flex-direction: row; 
+  }
+  .divUserMenu {
+      border-right: 2px solid #d1d5db; 
+  }
+  .divd4 {
+      padding-left: 15px;
+  }
 }
 
 @media (max-width: 767px) {
-    .divUserMenu {
-        border-right: none;
-        padding-bottom: 15px;
-    }
-    .divd4 {
-        padding-left: 0;
-        border-right: none;
-    }
+  .divUserMenu {
+      border-right: none;
+      padding-bottom: 15px;
+  }
+  .divd4 {
+      padding-left: 0;
+      border-right: none;
+  }
 }
 
 .divd5-card {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto; 
-    width: 100% !important;
-    height: 100%;
+  background-color: var(--color-surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; 
+  width: 100% !important;
+  height: 100%;
 }
 
 .divDash5-card-content {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px; 
-    align-items: center; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .labelclass {
-
-    font-weight: 500;
-    text-align: right; 
-    padding-right: 10px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-right: 10px;
 }
 
 .infoclass {
-    font-weight: 400;
-    color: #333;
-    text-align: left; 
+  color: var(--color-text);
+  font-weight: 500;
 }
 
 .divdash7 {
-    background-color: #efefef;
-    border-radius: 5px 5px 0px 0px;
-    padding: 10px;
-    text-align: center; 
-    font-weight: 600;
+  background-color: var(--color-bg);
+  border-radius: var(--radius) var(--radius) 0px 0px;
+  padding: 10px;
+  text-align: center; 
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 20px;
 }

@@ -12,8 +12,6 @@ const createRepairController = async (req, res) => {
         const { title, description, category, location, urgency, budget } = req.fields;
         const { photos } = req.files;
 
-        console.log('Creating repair with photos:', photos ? photos.length : 0);
-
         // Validation
         if (!title) return res.status(400).send({ error: "Title is required" });
         if (!description) return res.status(400).send({ error: "Description is required" });
@@ -26,21 +24,15 @@ const createRepairController = async (req, res) => {
         });
 
         // Handle photo uploads
-        if (photos && photos.length > 0) {
+        if (photos) {
             const photoArray = Array.isArray(photos) ? photos : [photos];
-            console.log('Processing', photoArray.length, 'photos');
-            repair.photos = photoArray.map(photo => {
-                console.log('Photo type:', photo.type, 'Size:', photo.size);
-                return {
-                    data: fs.readFileSync(photo.path),
-                    contentType: photo.type
-                };
-            });
-            console.log('Photos stored:', repair.photos.length);
+            repair.photos = photoArray.map(photo => ({
+                data: fs.readFileSync(photo.path),
+                contentType: photo.type
+            }));
+            repair.markModified('photos');
         }
-
         await repair.save();
-        console.log('Repair saved with ID:', repair._id, 'Photos:', repair.photos.length);
         
         res.status(201).send({
             success: true,
@@ -128,7 +120,13 @@ const getRepairController = async (req, res) => {
 const getUserRepairsController = async (req, res) => {
     try {
         const repairs = await repairModel.find({ client: req.user._id })
-            .populate('acceptedQuote')
+            .populate({
+                path: 'acceptedQuote',
+                populate: {
+                    path: 'tradesperson',
+                    select: 'firstname lastname email phone rating totalReviews _id'
+                }
+            })
             .sort({ createdAt: -1 });
 
         res.status(200).send({

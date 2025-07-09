@@ -30,10 +30,12 @@ const repairSchema = new mongoose.Schema({
         enum: ['low', 'medium', 'high', 'emergency'],
         default: 'medium'
     },
-    photos: [{
-        data: Buffer,
-        contentType: String
-    }],
+    photos: [
+  {
+    data: { type: Buffer },
+    contentType: { type: String }
+  }
+],
     status: {
         type: String,
         enum: ['open', 'in_progress', 'completed', 'cancelled'],

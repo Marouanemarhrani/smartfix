@@ -7,6 +7,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { AuthProvider} from "./context/auth";
 import axios from 'axios';
 import 'antd/dist/reset.css';
+import './styles/theme.css';
 
 // Add request interceptor to include auth token
 axios.interceptors.request.use(
