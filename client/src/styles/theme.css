@@ -1,34 +1,28 @@
-/* Global Theme Variables */
+/* Futuristic Light Theme Colors */
 :root {
-  --color-primary: #2563eb;
-  --color-secondary: #22d3ee;
-  --color-accent: #f59e42;
-  --color-bg: #f4f6fb;
-  --color-surface: #fff;
-  --color-text: #222;
-  --color-success: #22c55e;
-  --color-error: #ef4444;
-
-  --font-main: 'Inter', 'Segoe UI', Arial, sans-serif;
-  --font-size-base: 16px;
-  --font-size-lg: 1.25rem;
-  --font-size-sm: 0.95rem;
-
-  --radius: 10px;
-  --shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
-  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --spacing: 1.5rem;
+  --color-primary: #a259f7; /* Futuristic purple */
+  --color-secondary: #00ffe7; /* Neon cyan */
+  --color-accent: #ff4ecd; /* Neon magenta */
+  --color-success: #00c896; /* Neon green */
+  --color-warning: #ffe066; /* Soft yellow */
+  --color-error: #ff4e6b; /* Vibrant red */
+  --color-bg: linear-gradient(135deg, #f8fafc 60%, #f3e8ff 100%); /* Light gradient background */
+  --color-surface: rgba(255,255,255,0.85); /* Card/section background, glass effect */
+  --color-text: #23263a; /* Main text color */
+  --color-muted: #7b7e8b; /* Muted text */
+  --color-border: #e0e0f0; /* Border color */
+  --color-glass: rgba(255,255,255,0.7); /* Glassmorphism effect */
+  --radius: 18px;
+  --shadow: 0 4px 32px 0 rgba(160, 89, 247, 0.08);
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --font-main: 'Inter', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  --font-heading: 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
 }
 
-/* Base Styles */
 body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-main);
-  font-size: var(--font-size-base);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {

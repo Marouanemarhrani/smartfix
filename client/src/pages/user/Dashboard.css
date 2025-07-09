@@ -2,34 +2,43 @@
   display: flex;
   height: 100vh;
   width: auto;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
 }
 
 .divd2 {
   display: flex;
   flex-grow: 1;
-  flex-direction: column; 
+  flex-direction: column;
+  backdrop-filter: blur(8px);
 }
 
 .divUserMenu {
-  border-right: 2px solid #d1d5db; 
-  padding-right: 15px;
-  background-color: var(--color-surface);
-  border-radius: var(--radius);
+  border-right: 2px solid var(--color-secondary);
+  padding: 32px 18px 32px 18px;
+  background: var(--color-glass);
+  border-radius: 24px;
   box-shadow: var(--shadow);
+  margin-bottom: 32px;
+  min-width: 220px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1.5px solid var(--color-secondary);
+  backdrop-filter: blur(10px);
 }
 
 .divd4 {
   padding-left: 15px;
-  border-right: 2px solid #d1d5db;
+  border-right: 2px solid var(--color-border);
 }
 
 @media (min-width: 768px) {
   .divd2 {
-      flex-direction: row; 
+      flex-direction: row;
   }
   .divUserMenu {
-      border-right: 2px solid #d1d5db; 
+      border-right: 2px solid var(--color-border);
   }
   .divd4 {
       padding-left: 15px;
@@ -48,40 +57,49 @@
 }
 
 .divd5-card {
-  background-color: var(--color-surface);
-  padding: 20px;
-  border-radius: var(--radius);
+  background: var(--color-surface);
+  padding: 32px 28px;
+  border-radius: 32px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  margin: 0 auto; 
+  margin: 0 auto;
   width: 100% !important;
   height: 100%;
+  border: 1.5px solid var(--color-accent);
+  backdrop-filter: blur(12px);
 }
 
 .divDash5-card-content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
 .labelclass {
-  font-weight: 600;
-  color: var(--color-primary);
+  font-weight: 700;
+  color: var(--color-secondary);
   margin-right: 10px;
+  letter-spacing: 0.5px;
+  font-family: var(--font-heading);
 }
 
 .infoclass {
   color: var(--color-text);
   font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .divdash7 {
-  background-color: var(--color-bg);
-  border-radius: var(--radius) var(--radius) 0px 0px;
-  padding: 10px;
-  text-align: center; 
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+  border-radius: 18px 18px 0px 0px;
+  padding: 14px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }

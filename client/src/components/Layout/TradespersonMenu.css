@@ -1,12 +1,16 @@
 .tradesperson-menu {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: var(--color-glass, #f8f9fa);
+  border-radius: 24px;
+  box-shadow: var(--shadow, 0 2px 10px rgba(0, 0, 0, 0.1));
+  padding: 32px 18px 32px 18px;
   width: 250px;
+  min-width: 220px;
+  max-width: 260px;
   height: fit-content;
   position: sticky;
   top: 20px;
+  border: 1.5px solid var(--color-secondary, #a259f7);
+  backdrop-filter: blur(10px);
 }
 
 .tradesperson-menu-header {
@@ -17,10 +21,11 @@
 }
 
 .tradesperson-menu-header h3 {
-  color: #333;
+  color: var(--color-secondary, #a259f7);
   margin-bottom: 10px;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: var(--font-heading, inherit);
 }
 
 .tradesperson-menu-header p {
@@ -34,29 +39,34 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .tradesperson-menu-link {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 12px 15px;
   text-decoration: none;
-  color: #555;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  color: var(--color-text, #333);
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
   font-weight: 500;
+  width: 100%;
+  max-width: 300px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+  text-align: center;
+  justify-content: center;
 }
 
-.tradesperson-menu-link:hover {
-  background: #f8f9fa;
-  color: #007bff;
-  transform: translateX(5px);
-}
-
+.tradesperson-menu-link:hover,
 .tradesperson-menu-link.active {
-  background: #007bff;
-  color: white;
+  background: linear-gradient(90deg, var(--color-accent, #a259f7) 0%, var(--color-secondary, #43e6f7) 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px 0 var(--color-accent, #a259f7);
+  border: 1.5px solid var(--color-accent, #a259f7);
 }
 
 .tradesperson-menu-link i {
@@ -75,7 +85,7 @@
   background: #dc3545;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -95,6 +105,9 @@
     width: 100%;
     position: static;
     margin-bottom: 20px;
+    min-width: unset;
+    max-width: unset;
+    border-radius: 18px;
   }
   
   .tradesperson-menu-links {
@@ -107,5 +120,6 @@
     flex: 1;
     min-width: 120px;
     justify-content: center;
+    max-width: unset;
   }
 } 

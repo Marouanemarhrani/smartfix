@@ -2,6 +2,7 @@ const chatModel = require("../models/chatModel");
 const repairModel = require("../models/repairModel");
 const userModel = require("../models/userModel");
 const fs = require("fs");
+const formidable = require('formidable');
 
 // Create chat
 const createChatController = async (req, res) => {
@@ -69,50 +70,86 @@ const createChatController = async (req, res) => {
 
 // Send message
 const sendMessageController = async (req, res) => {
-    try {
-        const { chatId, content, messageType = 'text' } = req.body;
-        // No attachments support for now
-
-        if (!chatId) return res.status(400).send({ error: "Chat ID is required" });
-        if (!content) return res.status(400).send({ error: "Message content is required" });
-
-        const chat = await chatModel.findById(chatId);
-        if (!chat) {
-            return res.status(404).send({ error: "Chat not found" });
-        }
-
-        // Check if user is part of this chat
-        if (chat.client.toString() !== req.user._id.toString() && 
-            chat.tradesperson.toString() !== req.user._id.toString()) {
-            return res.status(403).send({ error: "You are not part of this chat" });
-        }
-
-        const message = {
-            sender: req.user._id,
-            content,
-            messageType,
-            timestamp: new Date()
-        };
-
-        // Remove attachment handling
-        // if (attachments && attachments.length > 0) { ... }
-
-        chat.messages.push(message);
-        chat.lastMessage = new Date();
-        await chat.save();
-
-        res.status(200).send({
-            success: true,
-            message: 'Message sent successfully',
-            message: message
+    // If multipart/form-data, use formidable to parse
+    if (req.headers['content-type'] && req.headers['content-type'].includes('multipart/form-data')) {
+        const form = formidable({ multiples: false });
+        form.parse(req, async (err, fields, files) => {
+            if (err) {
+                return res.status(400).send({ error: 'Error parsing form data' });
+            }
+            const { chatId, content = '' } = fields;
+            if (!chatId) return res.status(400).send({ error: "Chat ID is required" });
+            const chat = await chatModel.findById(chatId);
+            if (!chat) {
+                return res.status(404).send({ error: "Chat not found" });
+            }
+            if (chat.client.toString() !== req.user._id.toString() && 
+                chat.tradesperson.toString() !== req.user._id.toString()) {
+                return res.status(403).send({ error: "You are not part of this chat" });
+            }
+            let attachments = [];
+            let messageType = 'text';
+            if (files.attachment) {
+                const file = files.attachment;
+                attachments.push({
+                    data: fs.readFileSync(file.path),
+                    contentType: file.type,
+                    filename: file.name
+                });
+                messageType = 'image';
+            }
+            const message = {
+                sender: req.user._id,
+                content,
+                messageType,
+                attachments,
+                timestamp: new Date()
+            };
+            chat.messages.push(message);
+            chat.lastMessage = new Date();
+            await chat.save();
+            res.status(200).send({
+                success: true,
+                message: 'Message sent successfully',
+                message: message
+            });
         });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({
-            success: false,
-            message: 'Error sending message',
-            error,
-        });
+    } else {
+        // JSON/text message
+        try {
+            const { chatId, content, messageType = 'text' } = req.body;
+            if (!chatId) return res.status(400).send({ error: "Chat ID is required" });
+            if (!content) return res.status(400).send({ error: "Message content is required" });
+            const chat = await chatModel.findById(chatId);
+            if (!chat) {
+                return res.status(404).send({ error: "Chat not found" });
+            }
+            if (chat.client.toString() !== req.user._id.toString() && 
+                chat.tradesperson.toString() !== req.user._id.toString()) {
+                return res.status(403).send({ error: "You are not part of this chat" });
+            }
+            const message = {
+                sender: req.user._id,
+                content,
+                messageType,
+                timestamp: new Date()
+            };
+            chat.messages.push(message);
+            chat.lastMessage = new Date();
+            await chat.save();
+            res.status(200).send({
+                success: true,
+                message: 'Message sent successfully',
+                message: message
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({
+                success: false,
+                message: 'Error sending message',
+                error,
+            });
+        }
     }
 };
 
