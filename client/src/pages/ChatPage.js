@@ -90,7 +90,9 @@ const ChatPage = () => {
                 <div className="no-data">No messages yet.</div>
               ) : (
                 chat.messages.map((msg, idx) => {
-                  const isMe = msg.sender === auth?.user?._id;
+                  // Support both populated (object) and non-populated (string) sender
+                  const senderId = typeof msg.sender === 'object' && msg.sender !== null ? msg.sender._id : msg.sender;
+                  const isMe = senderId === auth?.user?._id;
                   return (
                     <div key={idx} style={{
                       marginBottom: '1.2rem',
