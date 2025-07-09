@@ -94,15 +94,8 @@ const sendMessageController = async (req, res) => {
             timestamp: new Date()
         };
 
-        // Handle attachments
-        if (attachments && attachments.length > 0) {
-            const attachmentArray = Array.isArray(attachments) ? attachments : [attachments];
-            message.attachments = attachmentArray.map(file => ({
-                data: fs.readFileSync(file.path),
-                contentType: file.type,
-                filename: file.name
-            }));
-        }
+        // Remove attachment handling
+        // if (attachments && attachments.length > 0) { ... }
 
         chat.messages.push(message);
         chat.lastMessage = new Date();
