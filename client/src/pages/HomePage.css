@@ -1,15 +1,13 @@
-/* Homepage Container */
+/* Modern HomePage */
 .homepage-container {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg);
 }
 
-/* Main Content */
 .main-content {
   padding: 20px;
 }
 
-/* Repair Jobs Grid */
 .repairs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -18,16 +16,18 @@
 }
 
 .repair-card {
-  background: white;
-  border-radius: 10px;
+  background: var(--color-surface);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition);
+  border: 1.5px solid var(--color-success);
 }
 
 .repair-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--color-warning);
+  border-color: var(--color-warning);
 }
 
 .repair-image {
@@ -48,8 +48,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8f9fa;
-  color: #6c757d;
+  background-color: var(--color-surface);
+  color: var(--color-muted);
   font-size: 1.1rem;
 }
 
@@ -58,14 +58,14 @@
 }
 
 .repair-content h5 {
-  color: #333;
+  color: var(--color-primary);
   margin-bottom: 10px;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 .repair-description {
-  color: #666;
+  color: var(--color-text);
   margin-bottom: 15px;
   line-height: 1.5;
 }
@@ -78,45 +78,47 @@
 }
 
 .category, .location, .urgency {
-  padding: 4px 8px;
-  border-radius: 15px;
+  padding: 4px 10px;
+  border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 500;
+  background: var(--color-glass);
+  color: var(--color-success);
 }
 
 .category {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  background: var(--color-glass);
+  color: var(--color-success);
 }
 
 .location {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
+  background: var(--color-glass);
+  color: var(--color-accent);
 }
 
 .urgency {
-  background-color: #fff3e0;
-  color: #f57c00;
+  background: var(--color-glass);
+  color: var(--color-warning);
 }
 
 .urgency-emergency {
-  background-color: #ffebee;
-  color: #d32f2f;
+  background: var(--color-error);
+  color: #fff;
 }
 
 .urgency-high {
-  background-color: #fff3e0;
-  color: #f57c00;
+  background: var(--color-warning);
+  color: #fff;
 }
 
 .urgency-medium {
-  background-color: #fff8e1;
-  color: #fbc02d;
+  background: var(--color-success);
+  color: #fff;
 }
 
 .urgency-low {
-  background-color: #f1f8e9;
-  color: #388e3c;
+  background: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .repair-footer {
@@ -128,7 +130,7 @@
 }
 
 .client {
-  color: #666;
+  color: var(--color-muted);
   font-size: 0.9rem;
 }
 
@@ -139,103 +141,62 @@
 }
 
 .quote-btn {
-  background-color: #28a745;
-  border-color: #28a745;
-  color: white;
-  font-size: 0.8rem;
-  padding: 4px 8px;
-  height: auto;
-  line-height: 1.2;
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, border 0.2s;
 }
 
 .quote-btn:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
-  color: white;
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-primary);
 }
 
 .quote-btn:focus {
-  background-color: #218838;
-  border-color: #1e7e34;
-  color: white;
-  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(201, 176, 55, 0.15);
 }
 
-/* Modal Styles */
 .ant-modal-content {
-  border-radius: 10px;
+  border-radius: 14px;
 }
 
 .ant-modal-header {
-  border-radius: 10px 10px 0 0;
+  border-radius: 14px 14px 0 0;
 }
 
 .ant-modal-title {
   font-weight: 600;
-  color: #333;
+  color: var(--color-primary);
 }
 
 .ant-form-item-label > label {
   font-weight: 500;
-  color: #555;
+  color: var(--color-accent);
 }
 
 .ant-input,
 .ant-input-number,
 .ant-select-selector {
-  border-radius: 6px;
-  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
 }
 
 .ant-input:focus,
 .ant-input-number:focus,
 .ant-select-focused .ant-select-selector {
-  border-color: #1890ff;
-  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 2px rgba(122, 140, 110, 0.15);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .repairs-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-  }
-
-  .repair-footer {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .repair-meta {
-    flex-direction: column;
-  }
-
-  .repair-actions {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 576px) {
-  .main-content {
-    padding: 15px;
-  }
-
-  .repairs-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .repair-content {
-    padding: 15px;
-  }
-
-  .repair-actions {
-    flex-direction: column;
-  }
-
-  .repair-actions .btn,
-  .repair-actions .ant-btn {
-    width: 100%;
-    margin-bottom: 5px;
   }
 }

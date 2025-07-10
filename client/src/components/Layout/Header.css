@@ -1,173 +1,202 @@
-/* General navbar settings for responsiveness */
+/* Modern Professional Header - Always White for Visibility */
 .header1 {
-  background-color: #ffffff; /* Keeping the background color light */
-  padding: 10px 15px; /* Adding padding for better spacing */
+  background-color: #fff;
+  padding: 10px 15px;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(26,34,51,0.04);
 }
 
 .header2 {
   display: flex;
-  justify-content: space-between; /* Ensures spacing between logo and other elements */
-  align-items: center; /* Vertically aligns items */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header3 {
-  border: none; /* Remove border from navbar toggler */
-  padding: 5px 10px; /* Adjust padding for better appearance */
+  border: none;
+  padding: 5px 10px;
 }
 
-/* Custom size and spacing for navbar toggler icon */
 .header4 {
-  width: 24px; /* Smaller width for icon */
-  height: 24px; /* Smaller height for icon */
+  width: 24px;
+  height: 24px;
 }
 
 .header5 {
-  justify-content: space-between; /* Distribute space between the elements inside the collapse */
+  justify-content: space-between;
 }
 
 .header6 {
-  font-size: 1.5rem; /* Larger font size for branding */
-  font-weight: bold; /* Make the branding bold */
-  text-transform: uppercase; /* Transform the text to uppercase */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 2px;
 }
 
 .header7 {
   display: flex;
-  gap: 15px; /* Space between nav items */
+  gap: 15px;
 }
 
-/* Dropdown menu settings */
 .header8, .header13 {
-  position: relative; /* Ensure dropdown stays aligned with nav items */
+  position: relative;
 }
 
 .header10, .header15 {
-  display: none; /* Hide dropdown by default */
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for dropdown */
+  background-color: #fff;
+  color: var(--color-primary);
+  box-shadow: 0px 8px 16px rgba(26, 34, 51, 0.08);
   z-index: 1000;
   min-width: 200px;
   padding: 0;
+  border-radius: var(--radius);
 }
 
-/* Show dropdown on hover */
 .header8:hover .header10, .header13:hover .header15 {
-  display: block; /* Show dropdown when hovering over Services or Categories */
-}
-
-/* Dropdown item styles */
-.header11, .header12, .header16, .header17 {
-  padding: 10px 20px;
-  color: #606060;
-  text-decoration: none;
   display: block;
 }
 
+.header11, .header12, .header16, .header17 {
+  padding: 10px 20px;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: block;
+  border-radius: var(--radius);
+  transition: background 0.2s, color 0.2s;
+}
+
 .header11:hover, .header12:hover, .header16:hover, .header17:hover {
-  background-color: #f0f0f0; /* Light background on hover */
-  color: #000000; /* Text color change on hover */
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
 }
 
-/* Styling for the search input */
 .header18 {
-  flex-grow: 1; /* Ensures search bar expands to fill space */
-  padding: 0 15px; /* Adds padding to separate search bar */
+  flex-grow: 1;
+  padding: 0 15px;
 }
 
-/* Right-aligned navigation items */
 .header19 {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between right-side items */
-  margin-right: 30px; /* Move the icons to the right */
-  justify-content: flex-end; /* Ensure the icons are right-aligned */
+  gap: 10px;
+  margin-right: 30px;
+  justify-content: flex-end;
 }
 
-/* Register/Login links */
 .header20 .header21, .header22 .header23 {
-  font-size: 0.9rem; /* Slightly smaller font size for links */
-  padding: 8px 12px; /* Padding for links */
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  color: var(--color-secondary);
+  border-radius: var(--radius);
+  transition: background 0.2s, color 0.2s;
+}
+
+.header20 .header21:hover, .header22 .header23:hover {
+  background: var(--color-accent);
+  color: #fff;
 }
 
 .header24 .header25 {
-  font-size: 1.5rem; /* Larger icon for user profile */
-  position: relative; /* Ensure the dropdown aligns correctly */
-  color: #606060 !important;
+  font-size: 1.5rem;
+  position: relative;
+  color: var(--color-success) !important;
   display: flex;
 }
 
 .header24 .header25:hover {
-  color: #000000 !important;
-}
-.header26 {
-  right: 0; /* Align the dropdown to the right edge of the container */
-  left: auto; /* Prevent it from overflowing to the left */
-  transform: translateX(-50%); /* Adjust position so it doesn't overflow */
-  padding: 10px 0; /* Padding for dropdown items */
+  color: var(--color-warning) !important;
 }
 
-/* Cart icon styling */
+.header26 {
+  right: 0;
+  left: auto;
+  transform: translateX(-50%);
+  padding: 10px 0;
+}
+
 .header29 .header30 {
-  font-size: 1.2rem; /* Slightly larger cart icon */
-  position: relative; /* Position to allow badge adjustment */
-  color: #606060 !important;
+  font-size: 1.2rem;
+  position: relative;
+  color: var(--color-accent) !important;
 }
 
 .header29 .header30:hover {
-  color: #000000 !important;
+  color: var(--color-warning) !important;
 }
 
 .header29 .ant-badge-count {
-  top: 9px; /* Adjust badge position closer to the icon */
-  right: 9px; /* Adjust badge position closer to the icon */
+  top: 9px;
+  right: 9px;
 }
 
 .navbar-logo {
-  height: 65px; /* Set the height as needed */
-  width: auto; /* Maintain aspect ratio */
+  height: 65px;
+  width: auto;
+  filter: brightness(0.95) contrast(1.1);
 }
 
-/* Responsive adjustments */
+.header7 .nav-link,
+.header9,
+.header14,
+.header21,
+.header23 {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.header7 .nav-link:hover,
+.header9:hover,
+.header14:hover,
+.header21:hover,
+.header23:hover {
+  color: var(--color-accent) !important;
+}
+
+.header24 .header25 {
+  color: var(--color-success) !important;
+}
+
+.header24 .header25:hover {
+  color: var(--color-warning) !important;
+}
+
 @media (max-width: 992px) {
   .header2 {
-    flex-direction: column; /* Stack logo and nav items vertically on smaller screens */
+    flex-direction: column;
   }
-
   .header5 {
-    margin-top: 10px; /* Add margin between logo and nav items */
+    margin-top: 10px;
   }
-
   .header18 {
-    flex-grow: unset; /* Prevent search bar from expanding too much */
-    width: 100%; /* Make search bar full width */
-    margin-bottom: 10px; /* Add space below search bar */
+    flex-grow: unset;
+    width: 100%;
+    margin-bottom: 10px;
   }
-
   .header19 {
-    justify-content: center; /* Center right-side items on smaller screens */
-    margin-right: 0; /* Remove the margin on smaller screens */
+    justify-content: center;
+    margin-right: 0;
   }
 }
 
-/* Additional adjustments for smaller devices */
 @media (max-width: 576px) {
   .header6 {
-    font-size: 1.2rem; /* Reduce font size for branding */
+    font-size: 1.2rem;
   }
-
   .header7 {
-    flex-direction: column; /* Stack nav items vertically */
-    gap: 10px; /* Reduce gap between items */
+    flex-direction: column;
+    gap: 10px;
   }
-
   .header20 .header21, .header22 .header23 {
-    padding: 6px 10px; /* Adjust padding for smaller screen links */
+    padding: 6px 10px;
   }
-
   .header29 .header30 {
-    font-size: 1rem; /* Reduce cart icon size */
+    font-size: 1rem;
   }
 }

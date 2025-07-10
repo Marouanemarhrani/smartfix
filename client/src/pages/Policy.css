@@ -1,43 +1,39 @@
-/* Container for the policy page */
+/* Modern Policy Page */
 .policy-container {
-    max-width: 800px; /* Limit the width for better readability */
-    margin: 0 auto; /* Center the content */
+    max-width: 800px;
+    margin: 0 auto;
     padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    background-color: var(--color-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    font-family: var(--font-main);
 }
 
-/* Title of the page */
 .policy-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--color-accent);
     text-align: center;
     margin-bottom: 2rem;
 }
 
-/* Each section in the policy */
 .policy-section {
     margin-bottom: 2rem;
 }
 
 .policy-section h2 {
     font-size: 1.8rem;
-    color: #007bff;
+    color: var(--color-success);
     margin-bottom: 1rem;
 }
 
-/* Paragraph styling */
 .policy-section p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
+    color: var(--color-text);
     margin-bottom: 1rem;
 }
 
-/* Styling for lists in the policy sections */
 .policy-section ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -48,40 +44,35 @@
     margin-bottom: 0.5rem;
 }
 
-/* Strong emphasis within the text */
 .policy-section strong {
     font-weight: bold;
-    color: #333;
+    color: var(--color-accent);
 }
 
-/* Link styling */
 .policy-section a {
-    color: #007bff;
+    color: var(--color-accent);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .policy-section a:hover {
     text-decoration: underline;
+    color: var(--color-success);
 }
 
-/* Responsive design adjustments */
 @media (max-width: 768px) {
     .policy-container {
         padding: 1.5rem;
     }
-
     .policy-title {
         font-size: 2rem;
     }
-
     .policy-section h2 {
         font-size: 1.5rem;
     }
-
     .policy-section p {
         font-size: 0.95rem;
     }
-
     .policy-section ul {
         margin-left: 15px;
     }
@@ -91,19 +82,15 @@
     .policy-container {
         padding: 1rem;
     }
-
     .policy-title {
         font-size: 1.75rem;
     }
-
     .policy-section h2 {
         font-size: 1.3rem;
     }
-
     .policy-section p {
         font-size: 0.9rem;
     }
-
     .policy-section ul {
         margin-left: 10px;
     }

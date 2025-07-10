@@ -1,106 +1,106 @@
+/* Modern Login Page */
 .bodylogin {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-bg);
 }
 
-/* Adjust the form position */
 .login {
-    background-color: #f8f9fa; /* White background with transparency */
+    background-color: var(--color-surface);
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
     max-width: 400px;
     width: 100%;
-    margin: 80px auto 0; /* Adjust margin to account for header height */
+    margin: 80px auto 0;
     text-align: center;
 }
 
-/* Form title */
 .login h1 {
-    color: #333; /* Dark text color */
+    color: var(--color-accent);
     margin-bottom: 20px;
     font-size: 24px;
+    font-family: var(--font-heading);
 }
 
-/* Input fields */
 .fclas {
-    background-color: #f1f3f5; /* Light grey background for input */
-    border: 1px solid #ced4da; /* Border around the input */
-    border-radius: 5px; /* Slightly rounded corners */
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
     padding: 10px;
-    font-size: 14px;
+    font-size: 15px;
     width: 100%;
     margin-bottom: 15px;
     box-sizing: border-box;
-    padding-right: 40px; /* Add padding to make space for the icon */
+    padding-right: 40px;
+    transition: border 0.2s;
 }
 
 .fclas:focus {
     outline: none;
-    border-color: #3a3b3b; /* Border color on focus */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-success);
+    box-shadow: 0 0 5px rgba(122, 140, 110, 0.15);
 }
 
-/* Password Wrapper */
 .password-wrapper {
     position: relative;
     width: 100%;
 }
 
-/* Password Toggle Icon */
 .password-toggle-icon {
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #6c757d;
+    color: var(--color-muted);
+    transition: color 0.2s;
 }
 
 .password-toggle-icon:hover {
-    color: #343a40;
+    color: var(--color-accent);
 }
 
-/* Forgot password button */
 .frgtclass {
     background-color: transparent;
-    color: #424141;
+    color: var(--color-accent);
     border: none;
     font-size: 14px;
     cursor: pointer;
     padding: 0;
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s;
 }
 
 .frgtclass:hover {
-    color: #252424; /* Darker blue on hover */
+    color: var(--color-success);
 }
 
-/* Submit button */
 .btncls {
-    background-color: rgb(214, 214, 214);
-    color: #474747;
+    background-color: var(--color-success);
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     width: 100%;
     box-sizing: border-box;
+    transition: background 0.2s;
 }
 
 .btncls:hover {
-    background-color: #474747; /* Darker blue on hover */
-    color: #f8f9fa;
+    background-color: var(--color-warning);
+    color: var(--color-primary);
 }
 
 .registercls {
     text-decoration: none;
-    color: rgb(89, 89, 89);
+    color: var(--color-muted);
+    transition: color 0.2s;
 }
 
 .registercls:hover {
-    color: #474747;
+    color: var(--color-accent);
 }
 
 .divreg {
@@ -115,23 +115,19 @@
     text-align: left;
 }
 
-/* Make the form responsive */
 @media (max-width: 768px) {
     .login {
         padding: 20px;
-        margin: 100px auto 0; /* Adjust margin for smaller screens */
+        margin: 100px auto 0;
     }
-
     .fclas {
         font-size: 14px;
         padding: 10px 15px;
     }
-
     .btncls {
         font-size: 14px;
         padding: 8px 15px;
     }
-
     h1 {
         font-size: 20px;
     }

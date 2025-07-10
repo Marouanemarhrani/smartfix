@@ -1,3 +1,4 @@
+/* Modern User Dashboard */
 .divDashboard {
   display: flex;
   height: 100vh;
@@ -13,10 +14,10 @@
 }
 
 .divUserMenu {
-  border-right: 2px solid var(--color-secondary);
+  border-right: 2px solid var(--color-success);
   padding: 32px 18px 32px 18px;
   background: var(--color-glass);
-  border-radius: 24px;
+  border-radius: 18px;
   box-shadow: var(--shadow);
   margin-bottom: 32px;
   min-width: 220px;
@@ -24,7 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 1.5px solid var(--color-secondary);
+  border: 1.5px solid var(--color-success);
   backdrop-filter: blur(10px);
 }
 
@@ -59,14 +60,14 @@
 .divd5-card {
   background: var(--color-surface);
   padding: 32px 28px;
-  border-radius: 32px;
+  border-radius: 24px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 100% !important;
   height: 100%;
-  border: 1.5px solid var(--color-accent);
+  border: 1.5px solid var(--color-success);
   backdrop-filter: blur(12px);
 }
 
@@ -78,7 +79,7 @@
 
 .labelclass {
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-success);
   margin-right: 10px;
   letter-spacing: 0.5px;
   font-family: var(--font-heading);
@@ -91,15 +92,15 @@
 }
 
 .divdash7 {
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+  background: linear-gradient(90deg, var(--color-success) 0%, var(--color-secondary) 100%);
   border-radius: 18px 18px 0px 0px;
   padding: 14px;
   text-align: center;
   font-weight: 800;
-  color: var(--color-text);
+  color: var(--color-primary);
   margin-bottom: 24px;
   font-family: var(--font-heading);
   font-size: 1.3rem;
   letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-shadow: 0 2px 8px rgba(26,34,51,0.08);
 }

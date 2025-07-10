@@ -1,22 +1,22 @@
-/* Futuristic Light Theme Colors */
+/* Professional Chic Theme Colors */
 :root {
-  --color-primary: #a259f7; /* Futuristic purple */
-  --color-secondary: #00ffe7; /* Neon cyan */
-  --color-accent: #ff4ecd; /* Neon magenta */
-  --color-success: #00c896; /* Neon green */
-  --color-warning: #ffe066; /* Soft yellow */
-  --color-error: #ff4e6b; /* Vibrant red */
-  --color-bg: linear-gradient(135deg, #f8fafc 60%, #f3e8ff 100%); /* Light gradient background */
-  --color-surface: rgba(255,255,255,0.85); /* Card/section background, glass effect */
-  --color-text: #23263a; /* Main text color */
-  --color-muted: #7b7e8b; /* Muted text */
-  --color-border: #e0e0f0; /* Border color */
-  --color-glass: rgba(255,255,255,0.7); /* Glassmorphism effect */
-  --radius: 18px;
-  --shadow: 0 4px 32px 0 rgba(160, 89, 247, 0.08);
-  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --color-primary: #1A2233; /* Bleu nuit (presque noir) */
+  --color-secondary: #E9E4D9; /* Beige doux */
+  --color-accent: #8C2F39; /* Bordeaux profond */
+  --color-success: #7A8C6E; /* Vert olive doux */
+  --color-warning: #C9B037; /* Doré discret */
+  --color-error: #B00020; /* Rouge profond */
+  --color-bg: #FAFAFA; /* Blanc cassé */
+  --color-surface: #F5F6FA; /* Gris très clair pour les cards/sections */
+  --color-text: #1A2233; /* Texte principal (bleu nuit) */
+  --color-muted: #7B7E8B; /* Texte atténué */
+  --color-border: #E0E0F0; /* Bordures */
+  --color-glass: rgba(233, 228, 217, 0.7); /* Effet glass beige */
+  --radius: 14px;
+  --shadow: 0 2px 16px 0 rgba(26, 34, 51, 0.08);
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
   --font-main: 'Inter', 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  --font-heading: 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  --font-heading: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 }
 
 body {
@@ -27,17 +27,17 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
-  font-family: var(--font-main);
+  font-family: var(--font-heading);
   margin-top: 0;
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition);
 }
 a:hover {
-  color: var(--color-accent);
+  color: var(--color-success);
 }
 
 button, .btn {
@@ -46,28 +46,28 @@ button, .btn {
   border: none;
   border-radius: var(--radius);
   padding: 0.6em 1.5em;
-  font-size: var(--font-size-base);
+  font-size: 1rem;
   font-family: var(--font-main);
   cursor: pointer;
   box-shadow: var(--shadow);
   transition: background var(--transition), box-shadow var(--transition);
 }
 button:hover, .btn:hover {
-  background: var(--color-secondary);
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+  background: var(--color-accent);
+  box-shadow: 0 4px 16px rgba(140, 47, 57, 0.12);
 }
 
 input, select, textarea {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 0.5em 1em;
-  font-size: var(--font-size-base);
+  font-size: 1rem;
   font-family: var(--font-main);
   background: #fff;
   transition: border var(--transition);
 }
 input:focus, select:focus, textarea:focus {
-  border-color: var(--color-primary);
+  border-color: var(--color-success);
   outline: none;
 }
 
@@ -75,8 +75,8 @@ input:focus, select:focus, textarea:focus {
   background: var(--color-surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: var(--spacing);
-  margin-bottom: var(--spacing);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Responsive Utilities */

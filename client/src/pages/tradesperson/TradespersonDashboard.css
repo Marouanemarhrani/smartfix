@@ -1,3 +1,4 @@
+/* Modern Tradesperson Dashboard */
 .tradesperson-dashboard-container {
   display: flex;
   gap: 30px;
@@ -14,15 +15,15 @@
 .dashboard-header {
   background: var(--color-surface);
   padding: 36px;
-  border-radius: 32px;
+  border-radius: 24px;
   box-shadow: var(--shadow);
   margin-bottom: 36px;
-  border: 1.5px solid var(--color-accent);
+  border: 1.5px solid var(--color-success);
   backdrop-filter: blur(10px);
 }
 
 .dashboard-header h1 {
-  color: var(--color-accent);
+  color: var(--color-success);
   margin-bottom: 10px;
   font-size: 2.2rem;
   font-weight: 800;
@@ -47,12 +48,12 @@
 .stat-card {
   background: var(--color-surface);
   padding: 32px 24px;
-  border-radius: 24px;
+  border-radius: 18px;
   box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   gap: 24px;
-  border: 1.5px solid var(--color-secondary);
+  border: 1.5px solid var(--color-success);
   transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition);
   position: relative;
   overflow: hidden;
@@ -60,39 +61,27 @@
 
 .stat-card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 36px 0 var(--color-accent);
-  border-color: var(--color-accent);
+  box-shadow: 0 12px 36px 0 var(--color-warning);
+  border-color: var(--color-warning);
 }
 
 .stat-icon {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+  background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text);
+  color: var(--color-secondary);
   font-size: 2.2rem;
   box-shadow: 0 2px 12px 0 var(--color-accent);
-}
-
-.stat-icon.accepted {
-  background: var(--color-success);
-}
-
-.stat-icon.pending {
-  background: var(--color-accent);
-}
-
-.stat-icon.earnings {
-  background: var(--color-secondary);
 }
 
 .stat-content h3 {
   font-size: 2.1rem;
   font-weight: 800;
-  color: var(--color-secondary);
+  color: var(--color-accent);
   margin: 0 0 5px 0;
   font-family: var(--font-heading);
 }
@@ -113,10 +102,10 @@
 
 .dashboard-section {
   background: var(--color-surface);
-  border-radius: 24px;
+  border-radius: 18px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  border: 1.5px solid var(--color-secondary);
+  border: 1.5px solid var(--color-success);
   backdrop-filter: blur(8px);
 }
 
@@ -127,10 +116,11 @@
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+  color: var(--color-secondary);
 }
 
 .section-header h2 {
-  color: var(--color-text);
+  color: var(--color-primary);
   margin: 0;
   font-size: 1.4rem;
   font-weight: 800;
@@ -145,10 +135,9 @@
 }
 
 .view-all:hover {
-  color: var(--color-secondary);
+  color: var(--color-warning);
 }
 
-/* Quotes List */
 .quotes-list {
   padding: 24px;
 }
@@ -190,12 +179,11 @@
 }
 
 .quote-date {
-  color: #666;
+  color: var(--color-muted);
   font-size: 0.9rem;
   margin: 0;
 }
 
-/* Jobs List */
 .jobs-list {
   padding: 24px;
 }
@@ -210,8 +198,8 @@
 }
 
 .job-item:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 2px 12px 0 var(--color-accent);
+  border-color: var(--color-success);
+  box-shadow: 0 2px 12px 0 var(--color-success);
 }
 
 .job-header {
@@ -222,7 +210,7 @@
 }
 
 .job-header h4 {
-  color: var(--color-accent);
+  color: var(--color-success);
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
@@ -230,17 +218,14 @@
 }
 
 .job-location {
-  color: #666;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  color: var(--color-accent);
+  font-size: 0.95rem;
 }
 
 .job-description {
-  color: #555;
-  margin: 10px 0;
-  line-height: 1.5;
+  color: var(--color-text);
+  font-size: 1rem;
+  margin: 8px 0;
 }
 
 .job-footer {
@@ -251,120 +236,108 @@
 }
 
 .job-budget {
-  color: var(--color-success);
+  color: var(--color-warning);
   font-weight: 700;
-  font-size: 1.2rem;
-  margin: 5px 0;
+  font-size: 1.1rem;
 }
 
 .job-date {
-  color: #666;
+  color: var(--color-muted);
   font-size: 0.9rem;
 }
 
-/* Status Badges */
 .status-badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  background: var(--color-glass);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-left: 8px;
 }
 
 .status-pending {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--color-warning);
 }
 
 .status-accepted {
-  background: #d4edda;
-  color: #155724;
+  background: var(--color-success);
 }
 
 .status-rejected {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--color-error);
 }
 
 .status-completed {
-  background: #d1ecf1;
-  color: #0c5460;
+  background: var(--color-accent);
 }
 
-/* Quick Actions */
 .quick-actions {
-  background: var(--color-surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 30px;
+  margin-top: 36px;
 }
 
 .quick-actions h2 {
-  color: var(--color-primary);
-  margin-bottom: 25px;
+  color: var(--color-accent);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 18px;
+  font-family: var(--font-heading);
 }
 
 .actions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
 }
 
 .action-card {
-  background: var(--color-bg);
-  padding: 25px;
-  border-radius: var(--radius);
-  text-decoration: none;
-  color: var(--color-primary);
-  text-align: center;
-  transition: all 0.3s var(--transition);
-  border: 2px solid transparent;
+  background: var(--color-surface);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-success);
+  transition: box-shadow 0.3s var(--transition), border-color 0.3s var(--transition);
+  cursor: pointer;
 }
 
 .action-card:hover {
-  background: var(--color-primary);
-  color: #fff;
-  transform: translateY(-5px);
-  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px 0 var(--color-warning);
+  border-color: var(--color-warning);
 }
 
 .action-card i {
   font-size: 2rem;
-  margin-bottom: 15px;
-  display: block;
+  color: var(--color-accent);
+  margin-bottom: 10px;
 }
 
 .action-card h3 {
-  margin: 0 0 10px 0;
+  color: var(--color-success);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  font-family: var(--font-heading);
 }
 
 .action-card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
   margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.8;
 }
 
-/* No Data */
 .no-data {
+  color: var(--color-muted);
   text-align: center;
-  color: #666;
-  font-style: italic;
-  padding: 20px;
+  padding: 24px 0;
 }
 
-/* Loading */
 .loading {
+  color: var(--color-accent);
   text-align: center;
-  color: #666;
-  font-size: 1.1rem;
-  padding: 50px;
+  padding: 24px 0;
 }
 
 /* Responsive Design */
