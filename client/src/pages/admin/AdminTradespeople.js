@@ -5,11 +5,14 @@ import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
 import "./AdminTradespeople.css";
+import { Modal, Descriptions } from 'antd';
 
 const AdminTradespeople = () => {
   const [tradespeople, setTradespeople] = useState([]);
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
+  const [selectedTradesperson, setSelectedTradesperson] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Get all tradespeople
   const getAllTradespeople = async () => {
@@ -30,6 +33,17 @@ const AdminTradespeople = () => {
   useEffect(() => {
     getAllTradespeople();
   }, []);
+
+  // Handler pour ouvrir la modale
+  const handleViewProfile = (tradesperson) => {
+    setSelectedTradesperson(tradesperson);
+    setIsModalVisible(true);
+  };
+  // Handler pour fermer la modale
+  const handleCloseModal = () => {
+    setSelectedTradesperson(null);
+    setIsModalVisible(false);
+  };
 
   return (
     <LayoutNF title={"All Tradespeople"}>
@@ -67,7 +81,7 @@ const AdminTradespeople = () => {
                           <td>{t.experience} years</td>
                           <td>{moment(t.createdAt).format('YYYY-MM-DD')}</td>
                           <td>
-                            <button className="btn btn-primary ms-2">
+                            <button className="btn btn-primary ms-2" onClick={() => handleViewProfile(t)}>
                               View Profile
                             </button>
                           </td>
@@ -81,6 +95,29 @@ const AdminTradespeople = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal de détail tradesperson */}
+      <Modal
+        title={selectedTradesperson ? `Tradesperson Profile: ${selectedTradesperson.firstname} ${selectedTradesperson.lastname}` : ''}
+        open={isModalVisible}
+        onCancel={handleCloseModal}
+        footer={null}
+        width={500}
+      >
+        {selectedTradesperson && (
+          <Descriptions bordered column={1} size="middle">
+            <Descriptions.Item label="First Name">{selectedTradesperson.firstname}</Descriptions.Item>
+            <Descriptions.Item label="Last Name">{selectedTradesperson.lastname}</Descriptions.Item>
+            <Descriptions.Item label="Email">{selectedTradesperson.email}</Descriptions.Item>
+            <Descriptions.Item label="Phone">{selectedTradesperson.phone}</Descriptions.Item>
+            <Descriptions.Item label="Specialization">{selectedTradesperson.specialization}</Descriptions.Item>
+            <Descriptions.Item label="Experience">{selectedTradesperson.experience} years</Descriptions.Item>
+            <Descriptions.Item label="Joined">
+              {moment(selectedTradesperson.createdAt).format('YYYY-MM-DD')}
+            </Descriptions.Item>
+          </Descriptions>
+        )}
+      </Modal>
     </LayoutNF>
   );
 };

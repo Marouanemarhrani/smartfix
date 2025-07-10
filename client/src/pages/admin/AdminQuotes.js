@@ -5,11 +5,14 @@ import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
 import "./AdminQuotes.css";
+import { Modal, Descriptions } from 'antd';
 
 const AdminQuotes = () => {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
+  const [selectedQuote, setSelectedQuote] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Get all quotes
   const getAllQuotes = async () => {
@@ -30,6 +33,17 @@ const AdminQuotes = () => {
   useEffect(() => {
     getAllQuotes();
   }, []);
+
+  // Handler pour ouvrir la modale
+  const handleViewDetails = (quote) => {
+    setSelectedQuote(quote);
+    setIsModalVisible(true);
+  };
+  // Handler pour fermer la modale
+  const handleCloseModal = () => {
+    setSelectedQuote(null);
+    setIsModalVisible(false);
+  };
 
   return (
     <LayoutNF title={"All Quotes"}>
@@ -65,7 +79,7 @@ const AdminQuotes = () => {
                           <td>{q.status}</td>
                           <td>{moment(q.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                           <td>
-                            <button className="btn btn-primary ms-2">
+                            <button className="btn btn-primary ms-2" onClick={() => handleViewDetails(q)}>
                               View Details
                             </button>
                           </td>
@@ -79,6 +93,26 @@ const AdminQuotes = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal de détail quote */}
+      <Modal
+        title={selectedQuote ? `Quote Details` : ''}
+        open={isModalVisible}
+        onCancel={handleCloseModal}
+        footer={null}
+        width={600}
+      >
+        {selectedQuote && (
+          <Descriptions bordered column={1} size="middle">
+            <Descriptions.Item label="Repair Title">{selectedQuote.repair?.title}</Descriptions.Item>
+            <Descriptions.Item label="Tradesperson">{selectedQuote.tradesperson?.firstname} {selectedQuote.tradesperson?.lastname}</Descriptions.Item>
+            <Descriptions.Item label="Amount">${selectedQuote.amount}</Descriptions.Item>
+            <Descriptions.Item label="Status">{selectedQuote.status}</Descriptions.Item>
+            <Descriptions.Item label="Description">{selectedQuote.description}</Descriptions.Item>
+            <Descriptions.Item label="Created At">{moment(selectedQuote.createdAt).format('YYYY-MM-DD HH:mm')}</Descriptions.Item>
+          </Descriptions>
+        )}
+      </Modal>
     </LayoutNF>
   );
 };

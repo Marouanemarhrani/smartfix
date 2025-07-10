@@ -4,13 +4,15 @@ import AdminMenu from '../../components/Layout/AdminMenu';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
-import { Select } from 'antd';
+import { Select, Modal, Descriptions } from 'antd';
 import "./AdminRepairs.css";
 
 const AdminRepairs = () => {
   const [repairs, setRepairs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
+  const [selectedRepair, setSelectedRepair] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Get all repairs
   const getAllRepairs = async () => {
@@ -31,6 +33,17 @@ const AdminRepairs = () => {
   useEffect(() => {
     getAllRepairs();
   }, []);
+
+  // Handler pour ouvrir la modale
+  const handleViewDetails = (repair) => {
+    setSelectedRepair(repair);
+    setIsModalVisible(true);
+  };
+  // Handler pour fermer la modale
+  const handleCloseModal = () => {
+    setSelectedRepair(null);
+    setIsModalVisible(false);
+  };
 
   return (
     <LayoutNF title={"All Repairs"}>
@@ -64,7 +77,7 @@ const AdminRepairs = () => {
                           <td>{r.status}</td>
                           <td>{moment(r.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                           <td>
-                            <button className="btn btn-primary ms-2">
+                            <button className="btn btn-primary ms-2" onClick={() => handleViewDetails(r)}>
                               View Details
                             </button>
                           </td>
@@ -78,6 +91,29 @@ const AdminRepairs = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal de détail repair */}
+      <Modal
+        title={selectedRepair ? `Repair Details: ${selectedRepair.title}` : ''}
+        open={isModalVisible}
+        onCancel={handleCloseModal}
+        footer={null}
+        width={600}
+      >
+        {selectedRepair && (
+          <Descriptions bordered column={1} size="middle">
+            <Descriptions.Item label="Title">{selectedRepair.title}</Descriptions.Item>
+            <Descriptions.Item label="Client">{selectedRepair.client?.firstname} {selectedRepair.client?.lastname}</Descriptions.Item>
+            <Descriptions.Item label="Status">{selectedRepair.status}</Descriptions.Item>
+            <Descriptions.Item label="Category">{selectedRepair.category}</Descriptions.Item>
+            <Descriptions.Item label="Location">{selectedRepair.location}</Descriptions.Item>
+            <Descriptions.Item label="Urgency">{selectedRepair.urgency}</Descriptions.Item>
+            <Descriptions.Item label="Budget">{selectedRepair.budgetMin} - {selectedRepair.budgetMax} €</Descriptions.Item>
+            <Descriptions.Item label="Description">{selectedRepair.description}</Descriptions.Item>
+            <Descriptions.Item label="Created At">{moment(selectedRepair.createdAt).format('YYYY-MM-DD HH:mm')}</Descriptions.Item>
+          </Descriptions>
+        )}
+      </Modal>
     </LayoutNF>
   );
 };

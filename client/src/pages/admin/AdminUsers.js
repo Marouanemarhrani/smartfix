@@ -5,11 +5,14 @@ import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
 import "./AdminUsers.css";
+import { Modal, Descriptions } from 'antd';
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Get all users
   const getAllUsers = async () => {
@@ -30,6 +33,17 @@ const AdminUsers = () => {
   useEffect(() => {
     getAllUsers();
   }, []);
+
+  // Handler pour ouvrir la modale
+  const handleViewProfile = (user) => {
+    setSelectedUser(user);
+    setIsModalVisible(true);
+  };
+  // Handler pour fermer la modale
+  const handleCloseModal = () => {
+    setSelectedUser(null);
+    setIsModalVisible(false);
+  };
 
   return (
     <LayoutNF title={"All Users"}>
@@ -68,7 +82,7 @@ const AdminUsers = () => {
                           </td>
                           <td>{moment(u.createdAt).format('YYYY-MM-DD')}</td>
                           <td>
-                            <button className="btn btn-primary ms-2">
+                            <button className="btn btn-primary ms-2" onClick={() => handleViewProfile(u)}>
                               View Profile
                             </button>
                           </td>
@@ -82,6 +96,30 @@ const AdminUsers = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal de détail utilisateur */}
+      <Modal
+        title={selectedUser ? `User Profile: ${selectedUser.firstname} ${selectedUser.lastname}` : ''}
+        open={isModalVisible}
+        onCancel={handleCloseModal}
+        footer={null}
+        width={500}
+      >
+        {selectedUser && (
+          <Descriptions bordered column={1} size="middle">
+            <Descriptions.Item label="First Name">{selectedUser.firstname}</Descriptions.Item>
+            <Descriptions.Item label="Last Name">{selectedUser.lastname}</Descriptions.Item>
+            <Descriptions.Item label="Email">{selectedUser.email}</Descriptions.Item>
+            <Descriptions.Item label="Phone">{selectedUser.phone}</Descriptions.Item>
+            <Descriptions.Item label="Role">
+              {selectedUser.role === 1 ? 'Admin' : selectedUser.role === 3 ? 'Tradesperson' : 'Client'}
+            </Descriptions.Item>
+            <Descriptions.Item label="Joined">
+              {moment(selectedUser.createdAt).format('YYYY-MM-DD')}
+            </Descriptions.Item>
+          </Descriptions>
+        )}
+      </Modal>
     </LayoutNF>
   );
 };
